@@ -31,7 +31,7 @@
 
 
 static void
-list_directory(
+scan_directory(
     const char *dirname)
 {
     struct dirent **files;
