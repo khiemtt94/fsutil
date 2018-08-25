@@ -31,10 +31,7 @@
 #include <dirent.h>
 #include "fsutil.h"
 
-
-static int
-find_directory(
-    const char *dirname)
+int find_directory(const char *dirname)
 {
     DIR *dir;
     char buffer[PATH_MAX + 2];

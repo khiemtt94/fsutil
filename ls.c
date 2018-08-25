@@ -31,14 +31,7 @@
 #include <dirent.h>
 #include "fsutil.h"
 
-
-
-
-
-
-static void
-list_directory(
-    const char *dirname)
+void list_directory(const char *dirname)
 {
     DIR *dir;
     struct dirent *ent;

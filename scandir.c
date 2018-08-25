@@ -30,9 +30,7 @@
 
 
 
-static void
-scan_directory(
-    const char *dirname)
+void scan_directory(const char *dirname)
 {
     struct dirent **files;
     int i;
