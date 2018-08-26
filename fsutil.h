@@ -15,7 +15,10 @@ void scan_directory (const char *dirname);
  */
 int find_directory (const char *dirname);
 
-long file_size(const char *file_name);
+/*
+ * Return size of input file name
+ */
+int file_size(const char *file_name);
 
 
 #endif // FSUTIL_H

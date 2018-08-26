@@ -27,9 +27,6 @@
 #include <dirent.h>
 #include "fsutil.h"
 
-
-
-
 void scan_directory(const char *dirname)
 {
     struct dirent **files;
