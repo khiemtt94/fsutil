@@ -3,7 +3,7 @@
 /*
  * List files and directories within a directory.
  */
-void list_directory (const char *dirname);
+char* list_directory (const char *dirname);
 
 /*
  * Scan files and directories within a directory.
@@ -19,6 +19,8 @@ int find_directory (const char *dirname);
  * Return size of input file name
  */
 int file_size(const char *file_name);
+
+void removeDir(const char *path);
 
 
 #endif // FSUTIL_H

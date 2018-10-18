@@ -30,10 +30,11 @@
 #include <string.h>
 #include <dirent.h>
 #include "fsutil.h"
+#include "uart.h"
 
-void list_directory(const char *dirname)
-{
+char* list_directory( const char *dirname) {
     DIR *dir;
+    char* buffer = (char *) malloc(10000);
     struct dirent *ent;
 
     /* Open directory stream */
@@ -44,28 +45,39 @@ void list_directory(const char *dirname)
         while ((ent = readdir (dir)) != NULL) {
             switch (ent->d_type) {
             case DT_REG:
-                printf ("%s\n", ent->d_name);
+                strcat(buffer,ent->d_name);
+                strcat(buffer,"\r\n");
                 break;
 
             case DT_DIR:
-                printf ("%s/\n", ent->d_name);
+                strcat(buffer,"/");
+                strcat(buffer,ent->d_name);
+                strcat(buffer,"\r\n");
                 break;
 
             case DT_LNK:
-                printf ("%s@\n", ent->d_name);
+                strcat(buffer,"@");
+                strcat(buffer,ent->d_name);
+                strcat(buffer,"\r\n");
                 break;
 
             default:
-                printf ("%s*\n", ent->d_name);
+                strcat(buffer,"*");
+                strcat(buffer,ent->d_name);
+                strcat(buffer,"\r\n");
+
+
             }
         }
 
         closedir (dir);
+        return buffer;
 
     } else {
         /* Could not open directory */
         printf ("Cannot open directory %s\n", dirname);
-        exit (EXIT_FAILURE);
+        //        exit (EXIT_FAILURE);
+        closedir (dir);
     }
 }
 
